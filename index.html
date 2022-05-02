@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Belly Button Biodiversity Dashboard</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="static/css/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header class="navbar navbar-dark navbar-expand-lg sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <!--a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a-->
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <!--a class="nav-link px-3" href="#">Sign out</a-->
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="navbar-expand-lg col-md-3 col-lg-2 d-md-block  sidebar collapse" 
+    style="background-color: rgb(35, 0, 59);">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item" >
+            <a style="color:#81b4fc" class="nav-link active" aria-current="page" href="#">
+              <span data-feather="home"></span>
+              Dashboard
+            </a>
+          </li>
+         
+          <li class="nav-item" style="color: #eff8ff; font-size: 1.2rem;">
+            <a class="nav-link" href="#"></a>
+              <span data-feather="layers"></span>
+              Select Test Subject ID <br><br>
+                  <!-- <select id="selDataset"></select> -->
+              <select id="selDataset" class="form-select"></select>
+            
+          </li>
+        </ul>
+        <ul class="nav flex-column">
+          <li class="nav-item" style="color: #eff8ff; font-size: 1.2rem;">
+            <br><br>
+            <span data-feather="users"></span>
+            Demographic Info
+          </li>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <p style="color: #e9e9e9;  font-size: 0.87rem" id="sample-metadata"></p>
+          </h6>
+        </ul>
+       
+      </div>
+    </nav>
+
+    <main class="col-md-10 ms-sm-auto col-lg-10 px-md-1">
+      <!--div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"-->
+        <div class="card card-image text-white" style="background-image:url('static/images/bellyBacteria.png');">
+        
+          <h1 class="display-1">Belly Button Biodiversity Dashboard</h1>
+
+        </div>
+        <div class="col-md-10  col-lg-12  px-md-4 card bg-light ">
+          <div class="card-footer">
+        <p class="lead text-justified" style="font-size: 18px;">
+           Dashboard to display a panel for demographic information and
+           visualize the bacterial data for each volunteer subject ID. 
+           Every volunteer or scientist is able to identify per sample/subject the top 10 bacterial species in their belly buttons
+           the whasing frequecy and the Bacteria Culture.
+        
+             </p>
+             <p>Instructions: To display the interactive charts click from the dropdown the Test Subject ID in the left navbar.</p>
+            </div>
+            </div>
+      </main>
+        <div class="col-md-10 ms-sm-auto col-lg-5 px-md-0">
+          <div class="card">
+            <div id="bar"></div>
+            <div class="card-footer">
+              <p class="text-justified " style="font-size: 16px;"> The chart above shows 10 baterias species with the hightest sample values,
+                if you hover the bars you can see the culture category.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 ">
+          <div class="card">
+            <div id="gauge"></div>
+            <div class="card-footer">
+              <p class="text-justified" style="font-size: 16px;"> The gauge chart above shows the washing frequecy of every subject.
+                To determine if there is a relations with the meet or it is just an external factor.
+        
+              </p>
+            </div>
+          </div>
+          
+        </div>
+          <div class="col-md-10 ms-sm-auto col-lg-10 px-md-0">
+            <div class="card">
+          <div id="bubble"></div></div>
+          <div class="card-footer" style="font-size: 16px;">
+            The bubble chart shows the severity of every subject by the size of the bubble. 
+            The bigger bubbles has the bigger sample values. It shows a general perspective of 
+            the distribution of all the samples then it could be helpful understand how is the 
+            selected subject comparing it wit chart of Bateria cultures.
+        
+          </div>
+          </div>
+
+  </div>
+</div>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
+
+
+      </script>
+ 
+
+
+            <!--D3  -->
+      <script src="https://d3js.org/d3.v7.min.js"></script>
+      <!-- JavaScript Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+      <!-- Plotly -->
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <script src="static/js/charts.js"></script>
+      <script src="static/js/dashboard.js"></script>
+  </body>
+</html>
